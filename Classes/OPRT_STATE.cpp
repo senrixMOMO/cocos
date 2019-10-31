@@ -1,0 +1,12 @@
+#include "OPRT_STATE.h"
+
+
+
+OPRT_STATE::OPRT_STATE()
+{
+}
+
+
+OPRT_STATE::~OPRT_STATE()
+{
+}
