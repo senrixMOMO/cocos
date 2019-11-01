@@ -5,7 +5,7 @@ USING_NS_CC;
 
 OPRT_KEY::OPRT_KEY(Node * sp)
 {
-	dir = Dir::NON;
+	input_key = Input::NON;
 	keyFlag = true;
 	Init(sp);
 }
@@ -22,19 +22,23 @@ void OPRT_KEY::Init(Node * sp)
 	{
 		if (keyCode == cocos2d::EventKeyboard::KeyCode::KEY_LEFT_ARROW)
 		{
-			dir = Dir::LEFT;
+			input_key = Input::LEFT;
 		}
 		else if (keyCode == cocos2d::EventKeyboard::KeyCode::KEY_RIGHT_ARROW)
 		{
-			dir = Dir::RIGHT;
+			input_key = Input::RIGHT;
 		}
 		else if (keyCode == cocos2d::EventKeyboard::KeyCode::KEY_UP_ARROW)
 		{
-			dir = Dir::UP;
+			input_key = Input::UP;
 		}
 		else if (keyCode == cocos2d::EventKeyboard::KeyCode::KEY_DOWN_ARROW)
 		{
-			dir = Dir::DOWN;
+			input_key = Input::DOWN;
+		}
+		else if (keyCode == cocos2d::EventKeyboard::KeyCode::KEY_Z)
+		{
+			input_key = Input::Z;
 		}
 		else
 		{
@@ -42,7 +46,7 @@ void OPRT_KEY::Init(Node * sp)
 	};
 	key->onKeyReleased = [this](cocos2d::EventKeyboard::KeyCode keyCode, cocos2d::Event *KeyEvent)
 	{
-		dir = Dir::NON;
+		input_key = Input::NON;
 		keyFlag = true;
 	};
 

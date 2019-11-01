@@ -2,6 +2,10 @@
 #include "OPRT_STATE.h"
 #include "cocos2d.h"
 
+//input[]
+//now[] = input[]
+//old[] = now[]
+
 struct OPRT_KEY :public OPRT_STATE
 {
 public:

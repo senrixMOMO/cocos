@@ -1,6 +1,7 @@
 #pragma once
 #include "cocos2d.h"
 #include <vector>
+#include <list>
 
 enum ANIM
 {
@@ -18,11 +19,12 @@ enum ANIM
 
 
 class OPRT_STATE;
-using func_t = int(*)(int);
 
 struct Module {
 
 };
+
+//std::function<型(引数)>)
 
 class Player : public cocos2d::Sprite
 {
@@ -35,8 +37,8 @@ public:
 	void CheckHitTile(int move);						//タイルとの当たり判定
 	void ChangeAnim();									//アニメーション切り替え
 
-	void func();
 	void PlayerMove();
+	void MoveLR();
 	ANIM GetAnimType();
 private:
 	CREATE_FUNC(Player);
@@ -46,6 +48,8 @@ private:
 	cocos2d::AnimationCache* anim;
 	cocos2d::Animation* animation[ANIM_MAX];			//アニメーション配列
 
+	EventKeyboard::KeyCode *keyCode;
+
 	ANIM anim_type;										//アニメーションタイプ
 	OPRT_STATE *oprt_state;
 
@@ -53,3 +57,8 @@ private:
 	std::vector<std::string> run = { "player-run-1.png","player-run-2.png","player-run-3.png","player-run-4.png","player-run-5.png","player-run-6.png","player-run-7.png","player-run-8.png","player-run-9.png","player-run-10.png" };
 	std::vector<std::string> jump = { "player-jump-1.png","player-jump-2.png","player-jump-3.png","player-jump-4.png","player-jump-5.png","player-jump-6.png"};
 };
+
+//module化
+//一つの関数に複数の機能を持たせない
+//ラムダ式、関数ポインタ、関数オブジェクト、クラス化などで
+//きちぃ

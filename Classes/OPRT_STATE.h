@@ -9,13 +9,14 @@ enum OPRT_TYPE
 	OPRT_TYPE_TOUCH,
 	OPRT_TYPE_MAX
 };
-enum class Dir
+enum class Input
 {
 	NON,
 	LEFT,
 	RIGHT,
 	UP,
 	DOWN,
+	Z,
 	MAX
 };
 struct OPRT_STATE : public cocos2d::Node
@@ -25,7 +26,7 @@ public:
 	~OPRT_STATE();
 	virtual OPRT_TYPE GetType() = 0;
 	virtual void Update(Node * sp) = 0;
-	Dir dir;
+	Input input_key;
 	bool keyFlag;
 };
 

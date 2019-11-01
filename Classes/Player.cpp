@@ -193,7 +193,7 @@ void Player::CheckHitTile(int move)
 //アニメーション切り替え
 void Player::ChangeAnim()
 {
-	if (oprt_state->dir == Dir::RIGHT)
+	if (oprt_state->input_key == Input::RIGHT)
 	{
 		if (anim_type != ANIM_RUN)
 		{
@@ -205,7 +205,7 @@ void Player::ChangeAnim()
 		}
 		anim_type = ANIM_RUN;
 	}
-	else if (oprt_state->dir == Dir::LEFT)
+	else if (oprt_state->input_key == Input::LEFT)
 	{
 		if (anim_type != ANIM_RUN)
 		{
@@ -229,11 +229,6 @@ void Player::ChangeAnim()
 	}
 }
 
-void Player::func()
-{
-
-}
-
 void Player::PlayerMove()
 {
 	auto Left = [&]() {
@@ -250,21 +245,21 @@ void Player::PlayerMove()
 	};
 	if (oprt_state->keyFlag)
 	{
-		switch (oprt_state->dir)
+		switch (oprt_state->input_key)
 		{
-		case Dir::LEFT:
+		case Input::LEFT:
 			Left();
 			break;
-		case Dir::RIGHT:
+		case Input::RIGHT:
 			Right();
 			break;
-		case Dir::UP:
+		case Input::UP:
 			Up();
 			break;
-		case Dir::DOWN:
+		case Input::DOWN:
 			Down();
 			break;
-		case Dir::NON:
+		case Input::NON:
 			break;
 		default:
 			break;
