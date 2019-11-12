@@ -48,7 +48,7 @@ private:
 	cocos2d::AnimationCache* anim;
 	cocos2d::Animation* animation[ANIM_MAX];			//アニメーション配列
 
-	EventKeyboard::KeyCode *keyCode;
+	//EventKeyboard::KeyCode *keyCode;
 
 	ANIM anim_type;										//アニメーションタイプ
 	OPRT_STATE *oprt_state;
@@ -61,4 +61,3 @@ private:
 //module化
 //一つの関数に複数の機能を持たせない
 //ラムダ式、関数ポインタ、関数オブジェクト、クラス化などで
-//きちぃ

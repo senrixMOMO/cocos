@@ -43,12 +43,12 @@ void OPRT_TOUCH::Update(Node * sp)
 	if (oldPos.x > nowPos.x)
 	{
 		sp->setPositionX(sp->getPositionX() - 1);
-		dir = Dir::LEFT;
+		input_key = Input::LEFT;
 	}
 	if (oldPos.x < nowPos.x)
 	{
 		sp->setPositionX(sp->getPositionX() + 1);
-		dir = Dir::RIGHT;
+		input_key = Input::RIGHT;
 	}
 	if (oldPos.y < nowPos.y)
 	{

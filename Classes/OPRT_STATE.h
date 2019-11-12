@@ -19,6 +19,21 @@ enum class Input
 	Z,
 	MAX
 };
+
+enum class KeyTrigger
+{
+	ON,
+	OFF,
+	MAX
+};
+
+enum class Input_info
+{
+	NOW,
+	OLD,
+	MAX
+};
+
 struct OPRT_STATE : public cocos2d::Node
 {
 public:
@@ -27,6 +42,8 @@ public:
 	virtual OPRT_TYPE GetType() = 0;
 	virtual void Update(Node * sp) = 0;
 	Input input_key;
+	KeyTrigger trigger_key;
+	Input_info trigger_key_old;
 	bool keyFlag;
 };
 

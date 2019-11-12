@@ -15,5 +15,5 @@ public:
 	void Init(Node * sp);
 	void Update(Node * sp);
 private:
-};
 
+};
