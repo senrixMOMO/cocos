@@ -44,6 +44,7 @@ public:
 	Input input_key;
 	KeyTrigger trigger_key;
 	Input_info trigger_key_old;
+	int trigger;
 	bool keyFlag;
 };
 

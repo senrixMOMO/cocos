@@ -8,6 +8,7 @@ OPRT_KEY::OPRT_KEY(Node * sp)
 	input_key = Input::NON;
 	trigger_key = KeyTrigger::OFF;
 	trigger_key_old = Input_info::NOW;
+	trigger = 1;
 	keyFlag = true;
 	Init(sp);
 }
@@ -58,5 +59,6 @@ void OPRT_KEY::Init(Node * sp)
 
 void OPRT_KEY::Update(Node * sp)
 {
-	cocos2d::log("%d", trigger_key);
+	trigger = static_cast<int>(trigger_key);
+	cocos2d::log("%d", trigger);
 }
