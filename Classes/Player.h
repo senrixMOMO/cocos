@@ -21,6 +21,7 @@ enum ANIM
 class OPRT_STATE;
 
 struct Module {
+	ANIM animID;
 
 };
 
@@ -38,7 +39,6 @@ public:
 	void ChangeAnim();									//アニメーション切り替え
 
 	void PlayerMove();
-	void MoveLR();
 	ANIM GetAnimType();
 private:
 	CREATE_FUNC(Player);
@@ -61,3 +61,14 @@ private:
 //module化
 //一つの関数に複数の機能を持たせない
 //ラムダ式、関数ポインタ、関数オブジェクト、クラス化などで
+
+//playrt
+
+//actionCtl
+//actionlist 左移動 etc
+
+//関数オブジェクト
+//キー入力チェック(keyCode)
+//hitcheck
+//status
+//キャラ移動(ベクトル)
