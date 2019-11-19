@@ -19,6 +19,7 @@ enum ANIM
 
 
 class OPRT_STATE;
+class actionCtl;
 
 struct Module {
 	ANIM animID;
@@ -36,6 +37,7 @@ public:
 
 	void update(float delta);
 	void CheckHitTile(int move);						//タイルとの当たり判定
+	void CheckHitTileLR(int move, std::string actName);						//タイルとの当たり判定
 	void ChangeAnim();									//アニメーション切り替え
 
 	void PlayerMove();
@@ -44,13 +46,16 @@ private:
 	CREATE_FUNC(Player);
 	bool Init();
 	void InitAnim();
+	void InitAnim(std::string str);
 	void SetAnim();
-	cocos2d::AnimationCache* anim;
 	cocos2d::Animation* animation[ANIM_MAX];			//アニメーション配列
+
+	std::string ActName;
 
 	//EventKeyboard::KeyCode *keyCode;
 
 	ANIM anim_type;										//アニメーションタイプ
+	actionCtl *act;
 	OPRT_STATE *oprt_state;
 
 	std::vector<std::string> idle = { "player-idle-1.png" ,"player-idle-2.png" ,"player-idle-3.png" ,"player-idle-4.png" };

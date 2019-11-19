@@ -22,7 +22,11 @@ void OPRT_KEY::Init(Node * sp)
 	auto key = cocos2d::EventListenerKeyboard::create();
 	key->onKeyPressed = [this](cocos2d::EventKeyboard::KeyCode keyCode, cocos2d::Event *KeyEvent)
 	{
-		trigger_key = KeyTrigger::ON;
+		if (trigger_key == KeyTrigger::ON)
+		{
+			trigger_key = KeyTrigger::OFF;
+		}
+		trigger_key == KeyTrigger::ON;
 		if (keyCode == cocos2d::EventKeyboard::KeyCode::KEY_LEFT_ARROW)
 		{
 			input_key = Input::LEFT;
