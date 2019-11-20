@@ -2,6 +2,7 @@
 #include "cocos2d.h"
 #include <vector>
 #include <list>
+#include <memory>
 
 enum ANIM
 {
@@ -17,14 +18,8 @@ enum ANIM
 	ANIM_MAX
 };
 
-
 class OPRT_STATE;
 class actionCtl;
-
-struct Module {
-	ANIM animID;
-
-};
 
 //std::function<型(引数)>)
 
@@ -36,12 +31,13 @@ public:
 	static Player* createPlayer();
 
 	void update(float delta);
-	void CheckHitTile(int move);						//タイルとの当たり判定
-	void CheckHitTileLR(int move, std::string actName);						//タイルとの当たり判定
-	void ChangeAnim();									//アニメーション切り替え
+
+	void CheckHitTile(int move);							//タイルとの当たり判定
+	void CheckHitTileLR(int move, std::string actName);		//タイルとの当たり判定
+	void ChangeAnim();										//アニメーション切り替え
 
 	void PlayerMove();
-	ANIM GetAnimType();
+	//ANIM GetAnimType();
 private:
 	CREATE_FUNC(Player);
 	bool Init();
@@ -56,7 +52,8 @@ private:
 
 	ANIM anim_type;										//アニメーションタイプ
 	actionCtl *act;
-	OPRT_STATE *oprt_state;
+	std::unique_ptr<OPRT_STATE> oprt_state;
+	int speed;
 
 	std::vector<std::string> idle = { "player-idle-1.png" ,"player-idle-2.png" ,"player-idle-3.png" ,"player-idle-4.png" };
 	std::vector<std::string> run = { "player-run-1.png","player-run-2.png","player-run-3.png","player-run-4.png","player-run-5.png","player-run-6.png","player-run-7.png","player-run-8.png","player-run-9.png","player-run-10.png" };

@@ -6,7 +6,6 @@ USING_NS_CC;
 
 actionCtl::actionCtl()
 {
-	jumpFlag = false;
 	sy = 12.0f;
 }
 
@@ -20,7 +19,7 @@ void actionCtl::MoveLR(int speed, Node * sp)
 	sp->setPositionX(sp->getPositionX() + speed);
 }
 
-void actionCtl::Jump(float speed, Node * sp)
+void actionCtl::Jump(Node * sp)
 {
 	sp->setPositionY(sp->getPositionY() + sy);
 

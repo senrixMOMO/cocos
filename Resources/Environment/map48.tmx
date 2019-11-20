@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.2" tiledversion="1.2.5" orientation="orthogonal" renderorder="right-down" width="22" height="12" tilewidth="48" tileheight="48" infinite="0" nextlayerid="4" nextobjectid="1">
+ <tileset firstgid="1" name="tile" tilewidth="48" tileheight="48" tilecount="288" columns="24">
+  <image source="tilesets.png" width="1152" height="576"/>
+ </tileset>
+ <layer id="1" name="tile" width="22" height="12" locked="1" offsetx="2" offsety="2">
+  <data encoding="base64" compression="zlib">
+   eJxjYBgFo2AU0AuoDDEMADEeBjE=
+  </data>
+ </layer>
+ <layer id="2" name="water" width="22" height="12" locked="1" opacity="0.69">
+  <data encoding="base64" compression="zlib">
+   eJxjYBgFo2AU0AvE0wiX0wgDACDiEmU=
+  </data>
+ </layer>
+ <layer id="3" name="collision" width="22" height="12">
+  <data encoding="base64" compression="zlib">
+   eJwLZmBgCKYBzqYRHgWEwW4g3kMDPZeB+AqJ5hKj5zUQv8EhNwWIp5KoBwaYGRkYWBixy60B4rV49EgD2TJEYlkgliMCyxNw72AEABRfH1A=
+  </data>
+ </layer>
+</map>

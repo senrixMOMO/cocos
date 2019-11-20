@@ -13,6 +13,7 @@ USING_NS_CC;
 Player::Player()
 {
 	anim_type = ANIM_IDLE;
+	speed = 5;
 	Init();
 }
 
@@ -35,9 +36,9 @@ bool Player::Init()
 
 
 	#if (CC_TARGET_PLATFORM == CC_PLATFORM_WIN32)
-		oprt_state = new OPRT_KEY(this);
+		oprt_state.reset(new OPRT_KEY(this));
 	#else
-		oprt_state = new OPRT_TOUCH();
+		oprt_state.reset(new OPRT_TOUCH());
 	#endif
 
 
@@ -126,25 +127,25 @@ void Player::update(float delta)
 	oprt_state->Update(this);
 	if(ActName == "右移動")
 	{
-		CheckHitTileLR(2, "右移動");
+		CheckHitTileLR(speed, "右移動");
 		if (oprt_state->keyFlag)
 		{
-			act->MoveLR(2, this);
+			act->MoveLR(speed, this);
 		}
 	}
 	if (ActName == "左移動")
 	{
-		CheckHitTileLR(2, "左移動");
+		CheckHitTileLR(speed, "左移動");
 		if (oprt_state->keyFlag)
 		{
-			act->MoveLR(-2, this);
+			act->MoveLR(-speed, this);
 		}
 	}
 	if (ActName == "ジャンプ")
 	{
 		if (oprt_state->keyFlag)
 		{
-			act->Jump(10, this);
+			act->Jump(this);
 		}
 	}
 	if (ActName == "何もしない")
@@ -341,7 +342,7 @@ void Player::PlayerMove()
 	}
 }
 
-ANIM Player::GetAnimType()
-{
-	return anim_type;
-}
+//ANIM Player::GetAnimType()
+//{
+//	return anim_type;
+//}
