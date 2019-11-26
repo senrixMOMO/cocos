@@ -42,13 +42,11 @@ bool Player::Init()
 	#endif
 
 
-	InitAnim();
-	act = new actionCtl();
+		InitAnim();
+	act.reset(new actionCtl());
 	//player初期位置設定
 	this->setPosition(Vec2(visibleSize.width / 2 + origin.x - 400, visibleSize.height / 2 + origin.y));
 	this->scheduleUpdate();
-	//void (Player::*fpFunc)() = Player::func;
-	//(this->*fpFunc)();
 
 	return true;
 }
@@ -148,12 +146,16 @@ void Player::update(float delta)
 			act->Jump(this);
 		}
 	}
+	if (ActName == "ジャンプ中")
+	{
+	}
 	if (ActName == "何もしない")
 	{
 		anim_type = ANIM_IDLE;
+		//act->Fall(this);
 	}
 	PlayerMove();
-	CheckHitTile(2);
+	CheckHitTile(5);
 	ChangeAnim();
 }
 
@@ -167,8 +169,8 @@ void Player::CheckHitTile(int move)
 	auto tileSize = 48;
 
 	////RECT
-	//auto rect1 = Vec2(this->getPosition());															//左上
-	//auto rect2 = Vec2(this->getPositionX() + width_size, this->getPositionY());						//右上
+	//auto rect1 = Vec2(this->getPosition());														//左上
+	//auto rect2 = Vec2(this->getPositionX() + width_size, this->getPositionY());					//右上
 	//auto rect3 = Vec2(this->getPositionX(), this->getPositionY() + height_size);					//左下		
 	//auto rect4 = Vec2(this->getPositionX() + width_size, this->getPositionY() + height_size);		//右下
 
@@ -187,13 +189,13 @@ void Player::CheckHitTile(int move)
 	{
 		if ((collision->getTileGIDAt(Vec2(px_down, py_down)) != 0 && oprt_state->keyFlag))
 		{
-			this->setPositionY(this->getPositionY() + move);
+			this->setPositionY(this->getPositionY() + 2);
 		}
 	}
 
 	if (collision->getTileGIDAt(Vec2(px_down, py_down)) == 0)
 	{
-		this->setPositionY(this->getPositionY() - move);
+		this->setPositionY(this->getPositionY() - 2);
 	}
 
 	//上判定
@@ -262,6 +264,7 @@ void Player::CheckHitTileLR(int move, std::string actName)
 			}
 		}
 	}
+
 }
 
 //アニメーション切り替え

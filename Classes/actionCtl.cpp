@@ -2,8 +2,6 @@
 #include "OPRT_STATE.h"
 #include "OPRT_KEY.h"
 
-USING_NS_CC;
-
 actionCtl::actionCtl()
 {
 	sy = 12.0f;
@@ -25,6 +23,7 @@ void actionCtl::Jump(Node * sp)
 
 }
 
-void actionCtl::Fall(int speed, Node * sp)
+void actionCtl::Fall(Node * sp)
 {
+	sp->setPositionY(sp->getPositionY() - 5);
 }

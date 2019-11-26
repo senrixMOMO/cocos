@@ -3,6 +3,23 @@
 #include <list>
 USING_NS_CC;
 
+enum class ANIM_ST 
+{
+	IDLE,
+	RUN,
+	JUMP,
+	FALL
+};
+//std::function<bool(Sprite & sp)> func;
+
+struct actModule
+{
+	ANIM_ST animID;
+	EventKeyboard::KeyCode keyCode;
+	//std::list<> blackList,
+
+};
+
 class actionCtl
 {
 public:
@@ -11,7 +28,8 @@ public:
 
 	void MoveLR(int speed, Node * sp);
 	void Jump(Node * sp);
-	void Fall(int speed, Node * sp);
+	void Fall(Node * sp);
+
 	float sy;		//ƒWƒƒƒ“ƒv—Í
 	//float 
 };

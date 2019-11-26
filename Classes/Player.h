@@ -1,7 +1,6 @@
 #pragma once
 #include "cocos2d.h"
 #include <vector>
-#include <list>
 #include <memory>
 
 enum ANIM
@@ -37,7 +36,6 @@ public:
 	void ChangeAnim();										//アニメーション切り替え
 
 	void PlayerMove();
-	//ANIM GetAnimType();
 private:
 	CREATE_FUNC(Player);
 	bool Init();
@@ -48,10 +46,8 @@ private:
 
 	std::string ActName;
 
-	//EventKeyboard::KeyCode *keyCode;
-
 	ANIM anim_type;										//アニメーションタイプ
-	actionCtl *act;
+	std::unique_ptr<actionCtl> act;
 	std::unique_ptr<OPRT_STATE> oprt_state;
 	int speed;
 
@@ -59,18 +55,3 @@ private:
 	std::vector<std::string> run = { "player-run-1.png","player-run-2.png","player-run-3.png","player-run-4.png","player-run-5.png","player-run-6.png","player-run-7.png","player-run-8.png","player-run-9.png","player-run-10.png" };
 	std::vector<std::string> jump = { "player-jump-1.png","player-jump-2.png","player-jump-3.png","player-jump-4.png","player-jump-5.png","player-jump-6.png"};
 };
-
-//module化
-//一つの関数に複数の機能を持たせない
-//ラムダ式、関数ポインタ、関数オブジェクト、クラス化などで
-
-//playrt
-
-//actionCtl
-//actionlist 左移動 etc
-
-//関数オブジェクト
-//キー入力チェック(keyCode)
-//hitcheck
-//status
-//キャラ移動(ベクトル)
