@@ -11,5 +11,6 @@
     <Effekseer.GUI.Dock.ScaleValues>Open</Effekseer.GUI.Dock.ScaleValues>
     <Effekseer.GUI.Dock.RendererCommonValues>Open</Effekseer.GUI.Dock.RendererCommonValues>
     <Effekseer.GUI.Dock.RendererValues>Open</Effekseer.GUI.Dock.RendererValues>
+    <Effekseer.GUI.Dock.FCurves>Open</Effekseer.GUI.Dock.FCurves>
   </Docks>
 </Root>
