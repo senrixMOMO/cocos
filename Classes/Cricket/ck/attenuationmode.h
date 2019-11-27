@@ -5,7 +5,7 @@
 /** @{ */
 
 #pragma once
-#include "ck/platform.h"
+#include "platform.h"
 
 
 /** Indicates how volume on 3D sounds is attenuated with distance. */

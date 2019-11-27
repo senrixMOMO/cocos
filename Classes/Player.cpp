@@ -14,11 +14,16 @@ Player::Player()
 {
 	anim_type = ANIM_IDLE;
 	speed = 5;
+	manager = nullptr;
+	count = 0;
+
 	Init();
 }
 
 Player::~Player()
 {
+	manager->release();
+	_music->destroy();
 	animation[ANIM_IDLE]->release();
 	animation[ANIM_RUN]->release();
 	animation[ANIM_JUMP]->release();
@@ -42,11 +47,20 @@ bool Player::Init()
 	#endif
 
 
-		InitAnim();
+	InitAnim();
 	act.reset(new actionCtl());
 	//player初期位置設定
 	this->setPosition(Vec2(visibleSize.width / 2 + origin.x - 400, visibleSize.height / 2 + origin.y));
 	this->scheduleUpdate();
+	auto rsize = Director::getInstance()->getOpenGLView()->getDesignResolutionSize();
+
+	manager = efk::EffectManager::create(rsize);
+	CkConfig config;
+	CkInit(&config);
+
+	_music = CkSound::newStreamSound("music.cks", kCkPathType_FileSystem);
+	_music->setLoopCount(-1);
+	_music->play();
 
 	return true;
 }
@@ -123,6 +137,10 @@ void Player::InitAnim(std::string str)
 void Player::update(float delta)
 {
 	oprt_state->Update(this);
+	manager->update();
+	CkUpdate();
+
+
 	if(ActName == "右移動")
 	{
 		CheckHitTileLR(speed, "右移動");
@@ -145,6 +163,26 @@ void Player::update(float delta)
 		{
 			act->Jump(this);
 		}
+		auto effect = efk::Effect::create("Laser01.efk", 13.0f);
+		if (effect != nullptr)
+		{
+			auto emitter = efk::EffectEmitter::create(manager);
+			emitter->setEffect(effect);
+			if (count == 0)
+			{
+				emitter->setPlayOnEnter(true);
+			}
+
+			emitter->setRotation3D(cocos2d::Vec3(90, 0, 0));
+			emitter->setPosition(Vec2(this->getPosition()) + Vec2(0,-200));
+
+			// emitter->setScale(13);
+			this->addChild(emitter, 0);
+
+			// No need (because it uses autorelease after 1.41)
+			//effect->release();
+			count++;
+		}
 	}
 	if (ActName == "ジャンプ中")
 	{
@@ -152,6 +190,7 @@ void Player::update(float delta)
 	if (ActName == "何もしない")
 	{
 		anim_type = ANIM_IDLE;
+		count = 0;
 		//act->Fall(this);
 	}
 	PlayerMove();
