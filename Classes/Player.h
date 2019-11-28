@@ -2,11 +2,6 @@
 #include "cocos2d.h"
 #include <vector>
 #include <memory>
-#include "Effekseer/Effekseer.h"
-#include "Cricket/ck/ck.h"
-#include "Cricket/ck/config.h"
-#include "Cricket/ck/bank.h"
-#include "Cricket/ck/sound.h"
 
 enum ANIM
 {
@@ -41,14 +36,6 @@ public:
 	void ChangeAnim();										//アニメーション切り替え
 
 	void PlayerMove();
-
-	efk::EffectManager* manager;
-
-	int count;
-	CkBank* _bank;
-	CkSound* _soundEffect;
-	CkSound* _music;
-
 private:
 	CREATE_FUNC(Player);
 	bool Init();

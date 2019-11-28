@@ -121,8 +121,6 @@ bool GameScene::init()
 
 	auto map = TMXTiledMap::create("Environment/map48.tmx"); 
 	map->setName("map");
-	auto col = map->getLayer("collision");
-	auto water = map->getLayer("water");
 
 
 	player = Player::createPlayer();
