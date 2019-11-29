@@ -32,8 +32,12 @@ void SoundManager::init()
 
 void SoundManager::SetSE(const char* file, const char* ckbx)
 {
-	_bank = CkBank::newBank(file);
+	_bank = CkBank::newBank(file, kCkPathType_FileSystem);
 	_soundEffect = CkSound::newBankSound(_bank, ckbx);
+}
+
+void SoundManager::PlaySE()
+{
 	_soundEffect->play();
 }
 
@@ -47,8 +51,8 @@ void SoundManager::SetBGM(const char* file)
 void SoundManager::Destroy()
 {
 	_music->destroy();
-	/*_bank->destroy();
-	_soundEffect->destroy();*/
+	_bank->destroy();
+	_soundEffect->destroy();
 
 	CkShutdown();
 }

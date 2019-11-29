@@ -21,6 +21,7 @@ public:
 	~SoundManager();
 	void init();
 	void SetSE(const char* file, const char* ckbx);
+	void PlaySE();
 	void SetBGM(const char* file);
 	void Destroy();
 	void update();

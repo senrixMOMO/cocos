@@ -21,6 +21,7 @@ public:
 	void init();
 	void PlayEffect(std::string str, float frame, Vec2 pos, Sprite* sp);
 	void CountClear();
+	void Update();
 
 private:
 	efk::EffectManager* manager;

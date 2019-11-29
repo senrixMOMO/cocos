@@ -52,7 +52,8 @@ bool Player::Init()
 	this->setPosition(Vec2(visibleSize.width / 2 + origin.x - 400, visibleSize.height / 2 + origin.y));
 	this->scheduleUpdate();
 
-	SoundManager::getInstance()->SetBGM("music.cks");
+	SoundManager::getInstance()->SetBGM("BGM2.cks");
+	SoundManager::getInstance()->SetSE("SE.ckb", "SE");
 
 	return true;
 }
@@ -130,6 +131,7 @@ void Player::update(float delta)
 {
 	oprt_state->Update(this);
 	SoundManager::getInstance()->update();
+	EffectControl::getInstance()->Update();
 
 	if(ActName == "‰EˆÚ“®")
 	{
@@ -138,6 +140,7 @@ void Player::update(float delta)
 		{
 			act->MoveLR(speed, this);
 		}
+		SoundManager::getInstance()->PlaySE();
 	}
 	if (ActName == "¶ˆÚ“®")
 	{
@@ -146,6 +149,7 @@ void Player::update(float delta)
 		{
 			act->MoveLR(-speed, this);
 		}
+		SoundManager::getInstance()->PlaySE();
 	}
 	if (ActName == "ƒWƒƒƒ“ƒv")
 	{

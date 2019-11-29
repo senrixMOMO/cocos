@@ -57,3 +57,8 @@ void EffectControl::CountClear()
 {
 	_count = 0;
 }
+
+void EffectControl::Update()
+{
+	manager->update();
+}
